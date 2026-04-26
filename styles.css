@@ -12,6 +12,7 @@
     --white: #ffffff;
     --border-radius: 12px;
     --transition: all 0.3s ease;
+    --success-color: #10b981;
 }
 
 body {
@@ -53,12 +54,14 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     transition: var(--transition);
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover {
@@ -113,6 +116,7 @@ body {
 }
 
 .portfolio h2,
+.upload-section h2,
 .about h2,
 .contact h2 {
     font-size: 2.5rem;
@@ -134,6 +138,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
     cursor: pointer;
+    position: relative;
 }
 
 .portfolio-item:hover {
@@ -170,9 +175,195 @@ body {
     font-size: 0.95rem;
 }
 
+.portfolio-item .category {
+    padding: 0 1.5rem;
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.portfolio-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 1);
+}
+
+/* Upload Section */
+.upload-section {
+    padding: 4rem 2rem;
+    background-color: white;
+}
+
+.upload-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.upload-box {
+    border: 3px dashed var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    background-color: var(--light-bg);
+}
+
+.upload-box:hover {
+    border-color: var(--secondary-color);
+    background-color: rgba(99, 102, 241, 0.05);
+    transform: scale(1.02);
+}
+
+.upload-box.dragover {
+    border-color: var(--secondary-color);
+    background-color: rgba(139, 92, 246, 0.1);
+}
+
+.upload-icon {
+    width: 60px;
+    height: 60px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.upload-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.upload-box p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-formats {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.file-formats p {
+    margin: 0.5rem 0;
+}
+
+/* Upload Form */
+.upload-form {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+}
+
+.upload-form h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+#designForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#designForm input,
+#designForm textarea {
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+#designForm input:focus,
+#designForm textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.upload-btn {
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.upload-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Preview */
+.upload-preview {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.upload-preview h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Message */
+.success-message {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid var(--success-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    color: var(--success-color);
+    font-weight: bold;
+    margin-bottom: 2rem;
+    animation: slideDown 0.5s ease;
+}
+
 /* About Section */
 .about {
     padding: 4rem 2rem;
+    background-color: var(--light-bg);
     text-align: center;
 }
 
@@ -186,7 +377,7 @@ body {
 /* Contact Section */
 .contact {
     padding: 4rem 2rem;
-    background-color: var(--light-bg);
+    background-color: white;
 }
 
 .contact-form {
@@ -257,10 +448,16 @@ footer {
 }
 
 /* Responsive Design */
+@media (max-width: 968px) {
+    .upload-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .hero-content h1 {
@@ -272,6 +469,7 @@ footer {
     }
 
     .portfolio h2,
+    .upload-section h2,
     .about h2,
     .contact h2 {
         font-size: 2rem;
@@ -284,6 +482,14 @@ footer {
     .hero {
         padding: 4rem 2rem;
     }
+
+    .upload-box {
+        padding: 2rem;
+    }
+
+    .upload-form {
+        padding: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -295,6 +501,7 @@ footer {
     .nav-links {
         flex-direction: column;
         gap: 0.5rem;
+        font-size: 0.8rem;
     }
 
     .hero-content h1 {
@@ -304,5 +511,18 @@ footer {
     .cta-button {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
+    }
+
+    .upload-container {
+        gap: 1.5rem;
+    }
+
+    .upload-box {
+        padding: 1.5rem;
+    }
+
+    .upload-icon {
+        width: 40px;
+        height: 40px;
     }
 }
