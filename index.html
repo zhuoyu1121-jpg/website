@@ -13,6 +13,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#upload">Upload Design</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -37,8 +38,69 @@
                         <p>Your Design Here</p>
                     </div>
                     <h3>Design Title</h3>
-                    <p>Description of your design project</p>
+                    <p>Description of your design</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Upload Your Design</h2>
+            <div class="upload-container">
+                <div class="upload-box">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h3>Drag and drop your designs here</h3>
+                    <p>or click to select files</p>
+                    <input 
+                        type="file" 
+                        id="designInput" 
+                        multiple 
+                        accept="image/*"
+                        class="file-input"
+                    >
+                    <div class="file-formats">
+                        <p>Supported formats: JPG, PNG, GIF, WebP</p>
+                        <p>Max file size: 10MB per image</p>
+                    </div>
+                </div>
+
+                <div class="upload-form">
+                    <h3>Design Details</h3>
+                    <form id="designForm">
+                        <input 
+                            type="text" 
+                            placeholder="Design Title" 
+                            id="designTitle"
+                            required
+                        >
+                        <textarea 
+                            placeholder="Design Description" 
+                            id="designDescription"
+                            rows="4"
+                            required
+                        ></textarea>
+                        <input 
+                            type="text" 
+                            placeholder="Design Category (e.g., Web, Graphic, UI, Illustration)" 
+                            id="designCategory"
+                        >
+                        <button type="submit" class="upload-btn">Add Design to Portfolio</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="uploadPreview" class="upload-preview" style="display: none;">
+                <h3>Preview</h3>
+                <img id="previewImage" src="" alt="Preview" class="preview-image">
+            </div>
+
+            <div id="uploadSuccess" class="success-message" style="display: none;">
+                ✅ Design added successfully! Refresh the page to see it in your portfolio.
             </div>
         </div>
     </section>
